@@ -1,3 +1,4 @@
+import API_URL from './config';
 import Home from './pages/Home';
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,7 +16,7 @@ function App() {
 
     try {
       dispatch(ShowLoading());
-      const response = await axios.get('/api/portfolio/get-portfolio-data');
+      const response = await axios.get('${API_URL}/get-portfolio-data');
       dispatch(SetPortfolioData(response.data));
       dispatch(ReloadData(false));
       dispatch(HideLoading());
