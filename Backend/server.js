@@ -20,8 +20,17 @@ require("dotenv").config();
 const dbconfig = require("./config/dbconfig");
 const portfolioRoute = require("./routes/portfolioRoute");
 
+const cors = require('cors');
+app.use(cors());
+app.use(cors({
+    origin: 'https://sachin-portfolio-front.onrender.com'
+}));
+
+
 app.use(express.json());
 app.use("/api/portfolio", portfolioRoute);
+
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
