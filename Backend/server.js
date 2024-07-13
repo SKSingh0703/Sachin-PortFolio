@@ -13,6 +13,14 @@
 // app.listen(port, () => {
 //     console.log(`Server Listening on ${port}`);
 // });
+
+
+const cors = require('cors');
+app.use(cors());
+
+
+
+
 const express = require('express');
 const app = express();
 require("dotenv").config();
