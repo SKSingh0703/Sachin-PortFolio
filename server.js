@@ -19,7 +19,7 @@ app.use("/api/portfolio", portfolioRoute);
 //         res.sendFile(path.join(__dirname,"client/build/index.html"));
 //     });
 // }
-const port = process.env.PORT || 5000  ;
+const port = process.env.PORT || 10000  ;
 app.listen(port, () => {
     console.log(`Server Listening on ${port}`);
 });
