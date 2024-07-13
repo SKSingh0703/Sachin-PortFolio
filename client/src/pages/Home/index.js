@@ -2,7 +2,7 @@ import React from 'react'
 import Header from "../../components/Header";
 import Intro from "./intro";
 import About from "./About";
-import Experience from "./Experiences"
+// import Experience from "./Experiences"
 import Projects from "./Projects"
 import Footer from './Footer';
 import Education from "./Education"
