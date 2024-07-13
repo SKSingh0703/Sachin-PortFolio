@@ -43,9 +43,9 @@ useEffect(()=>{
     <BrowserRouter>
       {loading ? <Loader /> : null}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin-login" element={<Login />} />
+        <Route path="https://sachin-portfolio-front.onrender.com/" element={<Home />} />
+        <Route path="https://sachin-portfolio-front.onrender.com/admin" element={<Admin />} />
+        <Route path="https://sachin-portfolio-front.onrender.com/admin-login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
