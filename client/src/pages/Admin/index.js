@@ -9,13 +9,15 @@ import Experiences from './AdminExperiences';
 import AdminProjects from './AdminProjects';
 import AdminContact from './AdminContact';
 
+import API_URL from '../../config'
+
 const { TabPane } = Tabs;
 function Admin() {
     const {portfolioData } = useSelector(state => state.root);
 
     useEffect(() =>{
         if (!localStorage.getItem("token")) {
-            window.location.href = "/admin-login";
+            window.location.href = `${API_URL}/admin-login`;
         }
     },[]);
 
