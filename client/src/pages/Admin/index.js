@@ -17,7 +17,7 @@ function Admin() {
 
     useEffect(() =>{
         if (!localStorage.getItem("token")) {
-            window.location.href = `${API_URL}/admin-login`;
+            window.location.href = `/admin-login`;
         }
     },[]);
 
