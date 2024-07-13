@@ -1,5 +1,5 @@
 {
-  "homepage": "https://SKSingh0703.github.io/MERNPortfolio",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
