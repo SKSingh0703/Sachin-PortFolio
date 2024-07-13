@@ -48,13 +48,6 @@ function Projects() {
                 <p className='text-white'>
                     {projects[selectedItemIndex].description}
                 </p>
-                <p className='text-white'>
-                Personal Growth:<br></br>
-                 My experience at TechXpert Solutions not only solidified my technical 
-                skills but also honed my ability to work effectively in fast-paced environments.
-                I learned to prioritize tasks, communicate technical ideas clearly, and collaborate with
-                diverse teams to achieve project goals.
-                </p>
 
               </div>
 
