@@ -1,27 +1,24 @@
 const router = require('express').Router();
-// const { default: AdminProjects } = require('../client/src/pages/Admin/AdminProjects');
-const {Intro , About ,Project ,Contact ,Experience ,Education} = require('../models/portfolioModel');
+const { Intro, About, Project, Contact, Experience, Education } = require('../models/portfolioModel');
 const { User } = require('../models/userModel');
-//Get All portfolio Data
-router.get('/get-portfolio-data', async(req,res) => {
-
-    try{
+router.get('/get-portfolio-data', async (req, res) => {
+    try {
         const intros = await Intro.find();
         const abouts = await About.find();
         const projects = await Project.find();
         const contacts = await Contact.find();
         const experiences = await Experience.find();
-        const educations = await Education.find();
+        // const educations = await Education.find();
 
         res.status(200).send({
-            intro :intros[0],
-            about : abouts[0],
-            projects : projects,
-            contact : contacts[0],
-            experiences:experiences,
-            education: educations
-        })
-    }catch(err) {
+            intro: intros[0],
+            about: abouts[0],
+            projects: projects,
+            contact: contacts[0],
+            experiences: experiences,
+            // education: educations
+        });
+    } catch (err) {
         res.status(500).send(err);
     }
 });
