@@ -35,20 +35,38 @@ function Login() {
             dispatch(HideLoading());
         }
     }
-  return (
-    <div className='flex justify-center items-center h-screen bg-primary'>
-      <div className='w-96 flex gap-5 p-5 shadow border-gray-500 flex-col bg-white ' >
-        <h1 className='text-2xl'>Portfolio - Admin Login</h1>
-        <hr />
-        <input type="text" value={user.username} onChange= {(e) => setUser({...user,username:e.target.value})} placeholder='Username' />
-        <input type="password" value={user.password} onChange= {(e) => setUser({...user,password:e.target.value})} placeholder='Password' />
-
-        <button className='bg-primary text-white p-2 rounded-md'
-        onClick={login}
-        >Submit</button>
+    return (
+      <div className="flex justify-center items-center h-screen bg-primary">
+          <div className="w-96 flex flex-col gap-6 p-8 shadow-lg rounded-lg border border-gray-400 bg-white">
+              <h1 className="text-3xl font-semibold text-gray-800 text-center opacity-85">Portfolio - Admin Login</h1>
+              <hr className="border-t-2 border-gray-300" />
+              
+              <input 
+                  type="text" 
+                  value={user.username} 
+                  onChange={(e) => setUser({ ...user, username: e.target.value })} 
+                  placeholder="Username" 
+                  className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary transition duration-200"
+              />
+              
+              <input 
+                  type="password" 
+                  value={user.password} 
+                  onChange={(e) => setUser({ ...user, password: e.target.value })} 
+                  placeholder="Password" 
+                  className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary transition duration-200"
+              />
+              
+              <button 
+                  className="bg-primary text-white p-3 rounded-md font-semibold hover:bg-primary-dark transition duration-200"
+                  onClick={login}
+              >
+                  Submit
+              </button>
+          </div>
       </div>
-    </div>
-  )
+  );
+  
 }
 
 export default Login
