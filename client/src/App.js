@@ -1,6 +1,6 @@
 import API_URL from './config';
 import Home from './pages/Home';
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Loader from './components/Loader';
 import axios from "axios";

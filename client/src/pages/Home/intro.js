@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 function Intro() {
   const { portfolioData } = useSelector(state => state.root);
   const {intro} = portfolioData;
   const {firstName ,lastName,welcomeText,description ,caption} = intro;
+  const navigate =useNavigate();
   return (
     <div className='h-[80vh] bg-primary flex flex-col items-start justify-center gap-8 py-10'>
 
@@ -16,7 +18,8 @@ function Intro() {
         <p className='text-white w-2/3'>
         {description || ""}
        </p>
-        <button className='border-2 border-tertiary text-tertiary px-10 py-3 rounded sm:hidden '>Get started</button>
+        <button onClick={()=>navigate(`/admin`)}
+         className='border-2 border-tertiary text-tertiary px-10 py-3 rounded sm:hidden '>Get started</button>
     </div>
   )
 }

@@ -16,7 +16,7 @@ function Projects() {
             <div className='flex flex-col gap-10 border-l-2 border-[#135e4c82] w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full'>
 
                 {projects.map((project , index) => (
-                    <div 
+                    <div key={index}
                       onClick={() => {
                         setSelectedItemIndex(index);
                       }}

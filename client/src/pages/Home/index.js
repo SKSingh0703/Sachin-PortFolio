@@ -15,6 +15,8 @@ function Home() {
   return (
     <div >
         <Header />
+        {console.log(portfolioData)
+        }
         {portfolioData && (
           <div className='bg-primary px-40 sm:px-5'>
           <Intro />
