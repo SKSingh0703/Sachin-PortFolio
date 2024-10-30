@@ -18,7 +18,7 @@ function Intro() {
         <p className='text-white w-2/3'>
         {description || ""}
        </p>
-        <button onClick={()=>navigate(`/admin`)}
+        <button onClick={()=>navigate(`/admin-login`)}
          className='border-2 border-tertiary text-tertiary px-10 py-3 rounded sm:hidden '>Get started</button>
     </div>
   )

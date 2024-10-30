@@ -1,17 +1,18 @@
 import { message } from 'antd';
 import axios from 'axios';
 import React from 'react'
-import { useState, } from "react";
+// import { useState, } from "react";
 import { HideLoading, ShowLoading } from '../../redux/rootSlice';
 import { useDispatch } from 'react-redux';
 import API_URL from '../../config';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [user ,setUser] =React.useState({
         username:"",
         password:""
     });
-
+    const navigate =useNavigate();
     const dispatch = useDispatch();
 
     const login = async () =>{
@@ -22,7 +23,8 @@ function Login() {
             if (response.data.success) {
                 message.success(response.data.success);
                 localStorage.setItem('token' , JSON.stringify(response.data));
-                window.location.href = '/admin';
+                // window.location.href = '/admin';
+                navigate('/admin');
 
             }
             else{
