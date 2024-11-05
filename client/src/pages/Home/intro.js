@@ -7,7 +7,7 @@ function Intro() {
   const {firstName ,lastName,welcomeText,description ,caption} = intro;
   const navigate =useNavigate();
   return (
-    <div className='h-[80vh] bg-primary flex flex-col items-start justify-center gap-8 py-10'>
+    <div id="home" className='h-[80vh] bg-primary flex flex-col items-start justify-center gap-8 py-10'>
 
         <h1 className='text-white'>{  welcomeText || '' }  </h1>
 

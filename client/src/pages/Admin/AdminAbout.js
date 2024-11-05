@@ -3,16 +3,20 @@ import { Form, message  } from 'antd';
 import { useSelector,useDispatch } from 'react-redux';
 import { ShowLoading,HideLoading } from "../../redux/rootSlice"
 import axios from 'axios'
+import API_URL from '../../config';
 function AdminAbout() {
 
   const {portfolioData } = useSelector(state => state.root);
   const dispatch = useDispatch();
+  const instance = axios.create({
+    baseURL: API_URL, // Your backend URL
+  });
   const onFinish= async (values)=>{
     try {
       const tempSkills = values.skills.split(",");
       values.skills=tempSkills;
       dispatch(ShowLoading())
-      const response = await axios.post("/api/portfolio/update-about",{
+      const response = await instance.post("/update-about",{
         ...values,
         _id:portfolioData.about._id,
       });

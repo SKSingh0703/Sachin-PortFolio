@@ -10,6 +10,7 @@ import AdminProjects from './AdminProjects';
 import AdminContact from './AdminContact';
 
 import API_URL from '../../config'
+import Header2 from '../../components/Header2';
 
 const { TabPane } = Tabs;
 function Admin() {
@@ -23,7 +24,7 @@ function Admin() {
 
   return (
     <div>
-        <Header />
+        <Header2 />
         <div className='flex gap-10 items-center px-5 py-3 justify-between'>
             <div className='flex gap-10 items-center'>
               <h1 className='text-3xl text-Primary font-semibold'>

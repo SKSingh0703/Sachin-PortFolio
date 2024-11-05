@@ -3,14 +3,18 @@ import { Form, message  } from 'antd';
 import { useSelector,useDispatch } from 'react-redux';
 import { ShowLoading,HideLoading } from "../../redux/rootSlice"
 import axios from 'axios'
+import API_URL from '../../config';
 function AdminContact() {
 
   const {portfolioData } = useSelector(state => state.root);
   const dispatch = useDispatch();
+  const instance = axios.create({
+    baseURL: API_URL,
+  });
   const onFinish= async (values)=>{
     try {
       dispatch(ShowLoading())
-      const response = await axios.post("/api/portfolio/update-contact",{
+      const response = await instance.post("/update-contact",{
         ...values,
         _id:portfolioData.contact._id,
       });

@@ -77,6 +77,8 @@ router.post("/add-experience" , async (req,res) => {
 //Update Experience
 router.post("/update-experience" , async (req,res) => {
     try {
+        console.log(req.body);
+        
         const experience = await Experience.findOneAndUpdate(
             { _id : req.body._id },
             req.body,
@@ -85,7 +87,7 @@ router.post("/update-experience" , async (req,res) => {
         res.status(200).send({
             data : experience,
             success:true,
-            message:"Experience Updated Successfullt",
+            message:"Experience Updated Successfully",
         });
     } catch (error) {
         res.status(500).send(error);
@@ -95,16 +97,18 @@ router.post("/update-experience" , async (req,res) => {
 //Delete Experience
 router.post("/delete-experience" , async (req,res) => {
     try {
-        const experience = await Project.findOneAndDelete(
+        console.log(req.body._id);
+         
+        const experience = await Experience.findOneAndDelete(
             { _id : req.body._id },
         );
         res.status(200).send({
             data : experience,
-            success:true,
-            message:"Experience Deleted Successfullt",
+            success:true, 
+            message:"Experience Deleted Successfully",
         });
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send(error); 
     }
 });
 
@@ -127,6 +131,12 @@ router.post("/add-project" , async (req,res) => {
 //Update Project
 router.post("/update-project" , async (req,res) => {
     try {
+        if (!req.body._id) {
+            return res.status(400).send({
+                success: false,
+                message: "Project ID is required."
+            });
+        } 
         const project = await Project.findOneAndUpdate(
             { _id : req.body._id },
             req.body,
@@ -145,6 +155,14 @@ router.post("/update-project" , async (req,res) => {
 //Delete Project
 router.post("/delete-project" , async (req,res) => {
     try {
+        if (!req.body._id) {
+            return res.status(400).send({
+                success: false,
+                message: "Project ID is required."
+            });
+        } 
+        console.log(req.body,"FFFF");
+        
         const project = await Project.findOneAndDelete(
             { _id : req.body._id },
         );

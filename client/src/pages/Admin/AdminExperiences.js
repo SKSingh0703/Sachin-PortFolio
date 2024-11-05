@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Form, message, Modal } from 'antd'
 import { HideLoading, ReloadData, ShowLoading } from '../../redux/rootSlice';
 import axios from 'axios';
+import API_URL from "../../config";
 
 function Experiences() {
   const dispatch = useDispatch();
@@ -11,20 +12,22 @@ function Experiences() {
     const [showAddEditModal , setShowAddEditModal] = React.useState(false);
     const[selectedItemForEdit , setSelectedItemForEdit ] = React.useState(null);
     const[type = "add" , setType] = React.useState("add");
-
+    const instance = axios.create({
+        baseURL: API_URL, // Your backend URL
+    });
 
    const onFinish = async (values) =>{
     try {
         dispatch(ShowLoading())
         let response
         if(selectedItemForEdit){
-            response = await axios.post("/api/portfolio/update-experience",{
+            response = await instance.post("/update-experience",{
                 ...values,
                 _id:selectedItemForEdit._id,
             });
         }
         else {
-            response = await axios.post("/api/portfolio/add-experience",values);
+            response = await instance.post("/add-experience",values);
         }
         dispatch(HideLoading());
         if (response.data.success) {
@@ -44,11 +47,14 @@ function Experiences() {
 };
 
 const onDelete = async (item)=>{
+    console.log(item._id);
+    
     try {
         dispatch(ShowLoading());
-        const response = await axios.post("/api/portfolio/delete-experience",{
+        const response = await instance.post("/delete-experience",{
             _id: item._id,
         });
+        
         dispatch(HideLoading());
         if (response.data.success) {
             message.success(response.data.message);

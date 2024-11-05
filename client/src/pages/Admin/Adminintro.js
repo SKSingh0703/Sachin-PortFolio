@@ -8,10 +8,13 @@ function Adminintro() {
 
   const {portfolioData } = useSelector(state => state.root);
   const dispatch = useDispatch();
+  const instance = axios.create({
+    baseURL: API_URL, // Your backend URL
+  });
   const onFinish= async (values)=>{
     try {
       dispatch(ShowLoading())
-      const response = await axios.post("/api/portfolio/update-intro",{
+      const response = await instance.post("/update-intro",{
         ...values,
         _id:portfolioData.intro._id,
       });
