@@ -9,7 +9,7 @@ function AdminAbout() {
   const {portfolioData } = useSelector(state => state.root);
   const dispatch = useDispatch();
   const instance = axios.create({
-    baseURL: API_URL, // Your backend URL
+    baseURL: API_URL, 
   });
   const onFinish= async (values)=>{
     try {

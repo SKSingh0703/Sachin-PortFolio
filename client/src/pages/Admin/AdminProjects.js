@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Form, message, Modal } from 'antd'
 import { HideLoading, ReloadData, ShowLoading } from '../../redux/rootSlice';
 import axios from 'axios';
+import API_URL from "../../config";
 
 function AdminProjects() {
   const dispatch = useDispatch();
@@ -11,7 +12,9 @@ function AdminProjects() {
     const [showAddEditModal , setShowAddEditModal] = React.useState(false);
     const[selectedItemForEdit , setSelectedItemForEdit ] = React.useState(null);
     const[type = "add" , setType] = React.useState("add");
-
+    const instance = axios.create({
+        baseURL: API_URL, // Your backend URL
+    });
 
    const onFinish = async (values) =>{
     try {
@@ -20,13 +23,13 @@ function AdminProjects() {
         dispatch(ShowLoading())
         let response
         if(selectedItemForEdit){
-            response = await axios.post("/api/portfolio/update-project",{
+            response = await instance.post("/update-project",{
                 ...values,
                 _id:selectedItemForEdit._id,
             });
         }
         else {
-            response = await axios.post("/api/portfolio/add-project",values);
+            response = await instance.post("/add-project",values);
         }
         dispatch(HideLoading());
         if (response.data.success) {
@@ -48,7 +51,7 @@ function AdminProjects() {
 const onDelete = async (item)=>{
     try {
         dispatch(ShowLoading());
-        const response = await axios.post("/api/portfolio/delete-project",{
+        const response = await instance.post("/delete-project",{
             _id: item._id,
         });
         dispatch(HideLoading());
