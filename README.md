@@ -10,6 +10,7 @@ Technologies Used:
 4) Node.js: JavaScript runtime environment for server-side scripting.
 5) Lottie: Used for animations to enhance user experience.
 6) JavaScript: Language used for both frontend and backend development.
+7) Redux-Toolkit:State management library for maintaining a global store and seamless access
 
 Features:
 
