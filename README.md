@@ -1,4 +1,4 @@
-My Portfolio Project:
+My Portfolio Project::
 
 This project showcases my portfolio using the MERN (MongoDB, Express.js, React.js, Node.js) stack, integrated with Lottie animations and JavaScript for dynamic functionality.
 
