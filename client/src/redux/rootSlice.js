@@ -5,7 +5,8 @@ const rootSlice = createSlice({
     initialState: {
         loading: false,
         portfolioData: null,
-        reloadData:false,
+        reloadData: false,
+        theme: 'dark', // 'light' or 'dark' - dark is default
     },
     reducers: {
         ShowLoading: (state, action) => {
@@ -19,9 +20,15 @@ const rootSlice = createSlice({
         },
         ReloadData:(state,action) =>{
             state.reloadData=action.payload;
+        },
+        ToggleTheme: (state) => {
+            state.theme = state.theme === 'dark' ? 'light' : 'dark';
+        },
+        SetTheme: (state, action) => {
+            state.theme = action.payload;
         }
     },
 });
 
 export default rootSlice.reducer;
-export const { ShowLoading, HideLoading, SetPortfolioData ,ReloadData } = rootSlice.actions;
+export const { ShowLoading, HideLoading, SetPortfolioData, ReloadData, ToggleTheme, SetTheme } = rootSlice.actions;

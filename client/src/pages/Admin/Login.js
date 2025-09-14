@@ -34,41 +34,60 @@ function Login() {
     }
   };
   return (
-    <div className="flex justify-center items-center h-screen bg-primary">
-      <div className="w-96 flex flex-col gap-6 p-8 shadow-lg rounded-lg border border-gray-400 bg-white">
-        <h1 className="text-3xl font-semibold text-gray-800 text-center opacity-85">
-          Portfolio - Admin Login
-        </h1>
-        <hr className="border-t-2 border-gray-300" />
+    <div className="flex justify-center items-center min-h-screen bg-primary dark:bg-primary-light transition-colors duration-300">
+      <div className="w-96 flex flex-col gap-6 p-8 shadow-2xl rounded-xl border border-tertiary/20 dark:border-tertiary-light/20 bg-white dark:bg-gray-100 transition-colors duration-300">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-primary dark:text-primary-light mb-2">
+            Portfolio
+          </h1>
+          <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-800">
+            Admin Login
+          </h2>
+        </div>
+        <hr className="border-t-2 border-tertiary/30 dark:border-tertiary-light/30" />
 
-        <input
-          type="text"
-          value={user.username}
-          onChange={(e) => setUser({ ...user, username: e.target.value })}
-          placeholder="Username"
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary transition duration-200"
-        />
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-800 mb-2">
+              Username
+            </label>
+            <input
+              type="text"
+              value={user.username}
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
+              placeholder="Enter your username"
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800"
+            />
+          </div>
 
-        <input
-          type="password"
-          value={user.password}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
-          placeholder="Password"
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary transition duration-200"
-        />
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-800 mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              placeholder="Enter your password"
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800"
+            />
+          </div>
+        </div>
 
-        <button
-          className="bg-primary text-white p-3 rounded-md font-semibold hover:bg-primary-dark transition duration-200"
-          onClick={login}
-        >
-          Login
-        </button>
-        <button
-          className="bg-white text-primary border border-primary p-3 rounded-md font-semibold hover:bg-primary hover:text-white transition duration-200 " 
-          onClick={()=>navigate(`/`)} 
-        >
-          Return
-        </button>
+        <div className="space-y-3">
+          <button
+            className="w-full btn-primary"
+            onClick={login}
+          >
+            Login
+          </button>
+          <button
+            className="w-full btn-secondary" 
+            onClick={()=>navigate(`/`)} 
+          >
+            Return to Portfolio
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const introSchema=new mongoose.Schema({
         type : String,
         required:true,
     },
-    firstname :{
+    firstName :{
         type : String,
         required:true,
     },
@@ -26,7 +26,7 @@ const introSchema=new mongoose.Schema({
 });
 
 const aboutSchema = new mongoose.Schema({
-    lottierURL :{
+    lottieURL :{
         type:String,
         required :true
     },
@@ -80,7 +80,7 @@ const projectsSchema = new mongoose.Schema({
         type:String,
         required :true
     },
-    technology :{
+    technologies :{
         type:Array,
         required :true
     }
@@ -122,6 +122,18 @@ const contactSchema =new mongoose.Schema({
         type:String,
         required :true
     },
+    github:{
+        type:String,
+        default: "https://github.com/SKSingh0703"
+    },
+    linkedin:{
+        type:String,
+        default: "https://www.linkedin.com/in/sachin-kumar-90884117a/"
+    },
+    instagram:{
+        type:String,
+        default: "https://www.instagram.com/sachin_kumar_0703/?hl=en"
+    }
 });
 
 module.exports = {

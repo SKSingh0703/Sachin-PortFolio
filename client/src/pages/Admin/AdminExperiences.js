@@ -47,8 +47,6 @@ function Experiences() {
 };
 
 const onDelete = async (item)=>{
-    console.log(item._id);
-    
     try {
         dispatch(ShowLoading());
         const response = await instance.post("/delete-experience",{
@@ -70,9 +68,9 @@ const onDelete = async (item)=>{
     }
 };
   return (
-    <div>
+    <div className="space-y-6">
         <div className='flex justify-end' >
-            <button className='bg-primary px-5 py-2 text-white rounded-md' onClick={()=>{
+            <button className='btn-primary' onClick={()=>{
                 setSelectedItemForEdit(null);
                 setShowAddEditModal(true);
             }}> 
@@ -80,27 +78,26 @@ const onDelete = async (item)=>{
             </button>
         </div>
 
-      <div className='grid grid-cols-4 gap-5 mt-5 sm:grid-cols-1'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
         {experiences.map((experience, index) => (
-          <div key={index} className='shadow border p-5 border-y-gray-400 flex-col ' >
-            <h1 className='text-primary text-xl font-bold' >{experience.period}</h1>
-            <hr />
-            <h1> <b>Company :</b> {experience.company}</h1>
-            <h1><b>Role :</b> {experience.title}</h1>
-            
-            <h1 className='py-5'> <b>Description :</b> {experience.description}</h1>
-            <div className='flex justify-end gap-5 mt-5'>
-            
-            <button className='px-5 py-2 bg-red-500 text-white rounded-md' type='submit'
-            onClick={()=>{
-                onDelete(experience);
-            }
-            } >Delete</button>
-            <button className='px-5 py-2 bg-primary text-white rounded-md' type='submit' onClick={()=>{
-                setSelectedItemForEdit(experience);
-                setShowAddEditModal(true);
-                setType("edit");
-            }} >Edit</button>
+          <div key={index} className='bg-white dark:bg-gray-50 shadow-lg border border-gray-200 dark:border-gray-300 p-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105' >
+            <h1 className='text-primary dark:text-primary-light text-xl font-bold mb-4' >{experience.period}</h1>
+            <div className="space-y-3 mb-4">
+              <h2 className="text-gray-700 dark:text-gray-800"><span className="font-semibold">Company:</span> {experience.company}</h2>
+              <h2 className="text-gray-700 dark:text-gray-800"><span className="font-semibold">Role:</span> {experience.title}</h2>
+              <p className='text-gray-600 dark:text-gray-700 text-sm'> <span className="font-semibold">Description:</span> {experience.description}</p>
+            </div>
+            <div className='flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-300'>
+              <button className='px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 text-sm font-medium' type='submit'
+              onClick={()=>{
+                  onDelete(experience);
+              }
+              } >Delete</button>
+              <button className='px-4 py-2 bg-tertiary dark:bg-tertiary-light hover:bg-tertiary-light dark:hover:bg-tertiary text-white dark:text-white rounded-lg transition-colors duration-200 text-sm font-medium' type='submit' onClick={()=>{
+                  setSelectedItemForEdit(experience);
+                  setShowAddEditModal(true);
+                  setType("edit");
+              }} >Edit</button>
             </div>
           </div>
         ))}
@@ -109,45 +106,62 @@ const onDelete = async (item)=>{
         {
             (type==="add" ||selectedItemForEdit) &&
         
-      <Modal visible={showAddEditModal }
-        title = { selectedItemForEdit ? "Edit Experience" : "Add Experience" }
+      <Modal 
+        visible={showAddEditModal}
+        title={<span className="text-lg font-semibold text-gray-800 dark:text-gray-200">{selectedItemForEdit ? "Edit Experience" : "Add Experience"}</span>}
         footer={null}
         onCancel={() => {
             setShowAddEditModal(false);
             setSelectedItemForEdit(null);
-        }} >
-
+        }}
+        className="admin-modal"
+        width={600}
+      >
         <Form layout='vertical' onFinish={onFinish}
             initialValues={selectedItemForEdit}
+            className="space-y-4"
         >
-            <Form.Item name='period' label="Period" >
-                <input placeholder='Period' />
+            <Form.Item name='period' label={<span className="text-gray-700 dark:text-gray-300 font-medium">Period</span>}>
+                <input 
+                  placeholder='e.g., Jan 2023 - Dec 2023' 
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                />
             </Form.Item>
-            <Form.Item name='company' label="Company" >
-                <input placeholder='Company' />
+            <Form.Item name='company' label={<span className="text-gray-700 dark:text-gray-300 font-medium">Company</span>}>
+                <input 
+                  placeholder='Company name' 
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                />
             </Form.Item>
-            <Form.Item name='title' label="Title" >
-                <input placeholder='Title' />
+            <Form.Item name='title' label={<span className="text-gray-700 dark:text-gray-300 font-medium">Job Title</span>}>
+                <input 
+                  placeholder='Your job title' 
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                />
             </Form.Item>
-            <Form.Item name='description' label="Description" >
-                <textarea placeholder='Description' />
+            <Form.Item name='description' label={<span className="text-gray-700 dark:text-gray-300 font-medium">Description</span>}>
+                <textarea 
+                  placeholder='Describe your role and responsibilities' 
+                  rows={4}
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 resize-none"
+                />
             </Form.Item>
 
-            <div className='flex justify-end'>
-                <button className='border-primary text-primary px-5 py-2 bg-white' onClick={()=>{
+            <div className='flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-600'>
+                <button 
+                  className='btn-secondary' 
+                  onClick={()=>{
                     setShowAddEditModal(false);
                     setSelectedItemForEdit(null);
-                }} 
-
+                  }} 
                 >
                     Cancel
                 </button>
-                <button className='bg-primary text-white px-5 py-2'>
-                     {selectedItemForEdit ? " Update " : " Add "}
+                <button className='btn-primary' type="submit">
+                     {selectedItemForEdit ? "Update Experience" : "Add Experience"}
                 </button>
             </div>
         </Form>
-
       </Modal>
         }
     </div>

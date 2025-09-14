@@ -32,26 +32,67 @@ function AdminContact() {
   };
 
   return (
-    <div>
-      <Form onFinish={onFinish} layout='vertical' initialValues={portfolioData.contact} >
+    <div className="bg-white dark:bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-300 transition-colors duration-300">
+      <Form onFinish={onFinish} layout='vertical' initialValues={portfolioData.contact} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Form.Item name="name" label={<span className="text-gray-700 dark:text-gray-800 font-medium">Name</span>}>
+            <input 
+              placeholder='Your full name' 
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-100 text-gray-900 dark:text-gray-800"
+            />
+          </Form.Item>
+          <Form.Item name="gender" label={<span className="text-gray-700 dark:text-gray-800 font-medium">Gender</span>}>
+            <input 
+              placeholder='Gender' 
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-100 text-gray-900 dark:text-gray-800"
+            />
+          </Form.Item>
+        </div>
         
-        <Form.Item name="name" label='Name' >
-          <input placeholder='Name' />
-        </Form.Item>
-        <Form.Item name="gender"  label='Gender'>
-          <input placeholder='Gender' />
-        </Form.Item>
-        <Form.Item name="email"  label='Email'>
-          <input placeholder='Email' />
-        </Form.Item>
-        <Form.Item name="Address"  label='Address'>
-          <input placeholder='Address' />
-        </Form.Item>
-        <div className='flex justify-end w-full'> 
-          <button className='px-10 py-2 bg-primary text-white rounded-md' type='submit' >Save</button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Form.Item name="email" label={<span className="text-gray-700 dark:text-gray-800 font-medium">Email</span>}>
+            <input 
+              type="email"
+              placeholder='your.email@example.com' 
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-100 text-gray-900 dark:text-gray-800"
+            />
+          </Form.Item>
+          <Form.Item name="address" label={<span className="text-gray-700 dark:text-gray-800 font-medium">Address</span>}>
+            <input 
+              placeholder='Your address' 
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-100 text-gray-900 dark:text-gray-800"
+            />
+          </Form.Item>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Form.Item name="github" label={<span className="text-gray-700 dark:text-gray-800 font-medium">GitHub URL</span>}>
+            <input 
+              type="url"
+              placeholder='https://github.com/username' 
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-100 text-gray-900 dark:text-gray-800"
+            />
+          </Form.Item>
+          <Form.Item name="linkedin" label={<span className="text-gray-700 dark:text-gray-800 font-medium">LinkedIn URL</span>}>
+            <input 
+              type="url"
+              placeholder='https://linkedin.com/in/username' 
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-100 text-gray-900 dark:text-gray-800"
+            />
+          </Form.Item>
+          <Form.Item name="instagram" label={<span className="text-gray-700 dark:text-gray-800 font-medium">Instagram URL</span>}>
+            <input 
+              type="url"
+              placeholder='https://instagram.com/username' 
+              className="w-full p-3 border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-tertiary dark:focus:ring-tertiary-light focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-100 text-gray-900 dark:text-gray-800"
+            />
+          </Form.Item>
+        </div>
+        
+        <div className='flex justify-end w-full pt-4 border-t border-gray-200 dark:border-gray-300'> 
+          <button className='btn-primary' type='submit'>Save Changes</button>
         </div>
       </Form>
-
     </div>
   )
 }

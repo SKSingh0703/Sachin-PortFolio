@@ -131,48 +131,82 @@ router.post("/add-project" , async (req,res) => {
 //Update Project
 router.post("/update-project" , async (req,res) => {
     try {
+        console.log("Update project request body:", req.body);
+        
         if (!req.body._id) {
             return res.status(400).send({
                 success: false,
                 message: "Project ID is required."
             });
         } 
+        
         const project = await Project.findOneAndUpdate(
             { _id : req.body._id },
             req.body,
             { new : true}
         );
+        
+        console.log("Updated project:", project);
+        
+        if (!project) {
+            return res.status(404).send({
+                success: false,
+                message: "Project not found."
+            });
+        }
+        
         res.status(200).send({
             data : project,
             success:true,
             message:"Project Updated Successfully",
         });
     } catch (error) {
-        res.status(500).send(error);
+        console.error("Update project error:", error);
+        res.status(500).send({
+            success: false,
+            message: "Internal server error",
+            error: error.message
+        });
     }
 });
 
 //Delete Project
 router.post("/delete-project" , async (req,res) => {
     try {
+        console.log("Delete project request body:", req.body);
+        
         if (!req.body._id) {
             return res.status(400).send({
                 success: false,
                 message: "Project ID is required."
             });
         } 
-        console.log(req.body,"FFFF");
         
         const project = await Project.findOneAndDelete(
             { _id : req.body._id },
         );
+        
+        console.log("Deleted project:", project);
+        
+        if (!project) {
+            return res.status(404).send({
+                success: false,
+                message: "Project not found."
+            });
+        }
+        
         res.status(200).send({
             data : project,
             success:true,
             message:"Project Deleted Successfully",
         });
     } catch (error) {
-        res.status(500).send(error);
+        console.error("Delete project error:", error);
+        res.status(500).send({
+            success: false,
+            message: "Internal server error",
+            error: error.message
+        });
     }
 });
 
