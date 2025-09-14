@@ -69,15 +69,15 @@ function Contact() {
             <SectionTitle title="Say Hello " />
             <div className='flex items-center justify-between sm:flex-col gap-8'>
                 <div className='flex flex-col gap-6 max-w-md'>
-                    <div className='bg-gray-800/50 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 dark:border-gray-600'>
-                        <h3 className='text-xl font-semibold text-white dark:text-gray-100 mb-4'>Get In Touch</h3>
+                    <div className='bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/60 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-emerald-200/50 dark:border-gray-700 shadow-xl'>
+                        <h3 className='text-xl font-semibold text-gray-800 dark:text-white mb-4'>Get In Touch</h3>
                         
                         {/* Essential Contact Info Only */}
                         <div className='space-y-3'>
                             {contact.name && (
                                 <div className='flex items-center gap-3'>
                                     <i className='ri-user-line text-tertiary dark:text-tertiary-light text-lg'></i>
-                                    <span className='text-gray-300 dark:text-gray-400'>{contact.name}</span>
+                                    <span className='text-gray-700 dark:text-gray-300'>{contact.name}</span>
                                 </div>
                             )}
                             
@@ -108,13 +108,13 @@ function Contact() {
                             {contact.address && (
                                 <div className='flex items-center gap-3'>
                                     <i className='ri-map-pin-line text-tertiary dark:text-tertiary-light text-lg'></i>
-                                    <span className='text-gray-300 dark:text-gray-400'>{contact.address}</span>
+                                    <span className='text-gray-700 dark:text-gray-300'>{contact.address}</span>
                                 </div>
                             )}
                         </div>
                         
-                        <div className='mt-6 pt-4 border-t border-gray-700 dark:border-gray-600'>
-                            <p className='text-sm text-gray-400 dark:text-gray-500'>
+                        <div className='mt-6 pt-4 border-t border-emerald-200 dark:border-gray-600'>
+                            <p className='text-sm text-gray-600 dark:text-gray-400'>
                                 Feel free to reach out for any opportunities or just to say hello!
                             </p>
                         </div>

@@ -38,7 +38,7 @@ function Projects() {
                        ${
                          selectedItemIndex === index
                            ? "text-tertiary dark:text-tertiary-light border-tertiary dark:border-tertiary-light border-l-4 -ml-[3px] bg-[#1a7f5a31] dark:bg-tertiary-light/20 font-semibold"
-                           : "text-white dark:text-gray-300 hover:text-tertiary dark:hover:text-tertiary-light hover:bg-gray-800/50 dark:hover:bg-gray-700/50"
+                           : "text-white dark:text-gray-700 hover:text-tertiary dark:hover:text-tertiary-light hover:bg-gray-800/50 dark:hover:bg-gray-700/50"
                        }`}
               >
                 {project.title}
@@ -65,7 +65,7 @@ function Projects() {
               {projects[selectedItemIndex].title}
             </h1>
 
-            <p className="text-white dark:text-gray-300 text-base leading-relaxed">
+            <p className="text-white dark:text-gray-700 text-base leading-relaxed">
               {projects[selectedItemIndex].description}
             </p>
             
